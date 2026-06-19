@@ -1,59 +1,43 @@
-# Ui
+# Deep Navy / Slate Dashboard UI Framework
+## Technical Engineering Documentation & Component Library Specification
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+Welcome to the official component design system registry. This system is designed around a premium **Deep Navy and Slate Blue** visual theme, optimized for mobile-first layouts, and written specifically for **Angular 19/21** utilizing standalone architectures, Zone-less rendering pipelines, and native TypeScript Signal inputs/outputs.
 
-## Development server
+---
 
-To start a local development server, run:
+## Architecture Overview
 
-```bash
-ng serve
-```
+All components within this repository share foundational design primitives:
+* **Canvas Background:** `#0B132B` (Deep Cosmic Navy)
+* **Surface / Panel Background:** `#1C2541` at variable opacity levels (`/40`, `/60`)
+* **Borders / Outlines:** `#3A506B` with low opacities (`/15`, `/20`, `/30`)
+* **Primary Interactive Accent:** `#2563EB` (Blue-600) / `#3B82F6` (Blue-500)
+* **Typography Archetype:** Slate family scales (`text-slate-100` down to `text-slate-500`)
+* **Icon Primitives:** Dedicated FontAwesome class string identifiers (`fas fa-*`)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Core Component Registry
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 1. Component: `dev-app-table-pagination`
+#### Description
+A reactive pagination wrapper that handles slice arithmetic for dataset windows, computes structural ranges on the fly via Signals, and maps page sizes dynamically with an internal instance of the design system's custom form field selector dropdown.
 
-```bash
-ng generate component component-name
-```
+#### Signature Primitives
+* **Inputs:**
+    * `totalItems = input.required<number>()`
+    * `pageSize = input<number>(10)`
+    * `currentPage = input<number>(1)`
+* **Outputs:**
+    * `pageChange = output<number>()`
+    * `pageSizeChange = output<number>()`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+#### Implementation Specification
+```html
+<app-dev-app-table-pagination
+  [totalItems]="rawUsers().length"
+  [pageSize]="itemsPerPage()"
+  [currentPage]="activePage()"
+  (pageChange)="activePage.set($event)"
+  (pageSizeChange)="itemsPerPage.set($event); activePage.set(1)" 
+/>
