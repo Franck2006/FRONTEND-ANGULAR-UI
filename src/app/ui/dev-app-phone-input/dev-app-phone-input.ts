@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { COUNTRIES } from '../../../data/phone/phone-number-code.data';
+import { COUNTRIES } from '../../phone/phone-number-code.data';
 
 interface CountryCode {
   code: string;
@@ -178,8 +178,8 @@ export class DevAppPhoneInput implements ControlValueAccessor {
   readonly isDropdownOpen = signal<boolean>(false);
   readonly searchQuery = signal<string>('');
 
-  onChange: (value: string) => void = () => {};
-  onTouched: () => void = () => {};
+  onChange: (value: string) => void = () => { };
+  onTouched: () => void = () => { };
 
   // Computed selector values
   readonly currentFlag = computed(() => {

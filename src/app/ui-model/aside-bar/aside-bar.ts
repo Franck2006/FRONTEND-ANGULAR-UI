@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { DevAppBtn } from '../../ui/dev-app-btn/dev-app-btn';
-import { SignOutModel } from '../../components/sign-out-model/sign-out-model';
+import { AppDevBtn } from "../../ui/app-dev-btn/app-dev-btn";
 
 @Component({
   selector: 'app-aside-bar',
-  imports: [RouterLink, RouterLinkActive, DevAppBtn, SignOutModel],
+  imports: [RouterLink, RouterLinkActive, AppDevBtn],
   template: `
     <div
       (click)="$event.stopPropagation()"
@@ -193,7 +192,7 @@ import { SignOutModel } from '../../components/sign-out-model/sign-out-model';
       </div>
 
       <div class="border-t border-slate-800/60 pt-4">
-        <app-dev-app-btn variant="ghost" size="md" routerLink="/settings" class="w-full">
+        <app-app-dev-btn variant="ghost" size="md" routerLink="/settings" class="w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -214,11 +213,11 @@ import { SignOutModel } from '../../components/sign-out-model/sign-out-model';
             />
           </svg>
           <span>Settings Layout</span>
-        </app-dev-app-btn>
+        </app-app-dev-btn >
       </div>
     </div>
 
-    <app-sign-out-model />
+    <!-- <app-sign-out-model /> -->
   `,
   styles: [
     `
@@ -256,4 +255,4 @@ import { SignOutModel } from '../../components/sign-out-model/sign-out-model';
     `,
   ],
 })
-export class AsideBar {}
+export class AsideBar { }

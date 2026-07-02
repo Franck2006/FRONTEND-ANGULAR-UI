@@ -1,13 +1,12 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { AsideMobile } from '../aside-mobile/aside-mobile';
 import { AsideBar } from '../aside-bar/aside-bar';
-import { SignOutModel } from '../../components/sign-out-model/sign-out-model';
-import { DevAppBtn } from '../../ui/dev-app-btn/dev-app-btn';
 import { RouterLink } from '@angular/router';
+import { AppDevBtn } from "../../ui/app-dev-btn/app-dev-btn";
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [AsideMobile, AsideBar, SignOutModel, DevAppBtn, RouterLink],
+  imports: [AsideMobile, AsideBar, RouterLink, AppDevBtn],
   template: `
     <div class="flex items-center justify-between w-full h-full">
       <!-- these are the mobile bars -->
@@ -62,7 +61,7 @@ import { RouterLink } from '@angular/router';
       <!-- Right Section: Actions & User Profile -->
       <div class="flex items-center gap-4">
         <!-- Action Button: Create Post -->
-        <app-dev-app-btn variant="primary" size="sm" [routerLink]="['/upload-article']">
+        <app-app-dev-btn variant="primary" size="sm" [routerLink]="['/upload-article']">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -74,7 +73,7 @@ import { RouterLink } from '@angular/router';
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           <span>Write Post</span>
-        </app-dev-app-btn>
+        </app-app-dev-btn>
 
         <!-- Notification Bell -->
         <button
@@ -160,7 +159,7 @@ import { RouterLink } from '@angular/router';
       <app-aside-bar />
     </app-aside-mobile>
 
-    <app-sign-out-model />
+    <!-- <app-sign-out-model /> -->
   `,
   styles: [
     `
