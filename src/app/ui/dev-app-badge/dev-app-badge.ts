@@ -1,6 +1,15 @@
 import { Component, computed, input } from '@angular/core';
 
-export type DevAppBadgeVariant = 'primary' | 'success' | 'warning' | 'danger' | 'slate';
+export type DevAppBadgeVariant =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'green'
+  | 'yellow'
+  | 'red'
+  | 'slate'
+  | 'light';
 
 @Component({
   selector: 'app-dev-app-badge',
@@ -36,6 +45,14 @@ export class DevAppBadge {
         return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
       case 'danger':
         return 'bg-red-500/10 text-red-400 border-red-500/20';
+      case 'green':
+        return 'bg-emerald-500/20 text-emerald-600 border-emerald-500/30';
+      case 'yellow':
+        return 'bg-yellow-400/20 text-yellow-600 border-yellow-400/30';
+      case 'red':
+        return 'bg-red-500/20 text-red-600 border-red-500/30';
+      case 'light':
+        return 'bg-slate-100 text-slate-900 border-slate-300/60';
       case 'slate':
       default:
         return 'bg-[#222E50]/60 text-slate-300 border-[#3A506B]/30';
